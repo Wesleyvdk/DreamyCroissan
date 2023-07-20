@@ -28,7 +28,7 @@ export default function RootLayout({
             <header>
               <div className="flex items-center justify-between">
                 <ModeToggle />
-                <nav className="ml-auto text-base font-medium space-x-2">
+                <nav className="ml-auto mr-20 text-xl font-medium space-x-2">
                   <Link
                     className="hover:bg-gradient-conic from-sky-600 via-purple-950 to-sky-600"
                     href="/"
@@ -43,9 +43,9 @@ export default function RootLayout({
                   </Link>
                   <Link
                     className="hover:bg-gradient-conic from-sky-600 via-blue-950 to-sky-600"
-                    href="/teams"
+                    href="/stories"
                   >
-                    Teams
+                    Stories
                   </Link>
                 </nav>
               </div>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import "../app/globals.css";
+import "../globals.css";
 
 export default function Home() {
   return (
@@ -9,18 +9,18 @@ export default function Home() {
       <div className="relative flex place-items-center after:absolute after:-z-20 after:h-[280px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
         <div className="w-72">
           <p className="mb-5">
-            Welcome to TaleVerse, your gateway to a world of captivating
+            Welcome to DreamyCroissant, your gateway to a world of captivating
             stories! We believe that every story has the power to transport
             readers to new realms of imagination and emotion. Our platform is
             dedicated to providing a diverse collection of tales from talented
             storytellers across the globe.
           </p>
           <p className="mb-5">
-            At TaleVerse, you can dive into a myriad of genres, from fantasy and
-            science fiction to romance and mystery. With our user-friendly
-            interface, you can easily discover stories based on your
-            preferences, sorted by upload date, name, or rating. If you're an
-            aspiring author, you can share your own tales and connect with
+            At DreamyCroissant, you can dive into a myriad of genres, from
+            fantasy and science fiction to romance and mystery. With our
+            user-friendly interface, you can easily discover stories based on
+            your preferences, sorted by upload date, name, or rating. If you're
+            an aspiring author, you can share your own tales and connect with
             readers who share your passion for storytelling.
           </p>
           <p className="mb-5">
@@ -32,7 +32,8 @@ export default function Home() {
           <p className="mb-5">
             Join us on this literary adventure and immerse yourself in the magic
             of words. Uncover new worlds, follow unforgettable characters, and
-            be a part of the ever-growing TaleVerse community. Happy reading!
+            be a part of the ever-growing DreamyCroissant community. Happy
+            reading!
           </p>
         </div>
       </div>
