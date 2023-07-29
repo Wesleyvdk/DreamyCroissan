@@ -37,7 +37,7 @@ export default function StoryCard({ stories }: { stories: Stories[] }) {
         </TableRow>
       </TableHead>
       <TableBody>
-        {stories?.map((story) => (
+        {stories.map((story) => (
           <TableRow key={story.id}>
             <TableCell className="text-stark">
               <Link href="/about">{story.name}</Link>
