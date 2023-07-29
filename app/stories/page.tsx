@@ -1,6 +1,5 @@
-import Image from "next/image";
 import "../globals.css";
-import { Footer, StoryCard } from "@/components";
+import { StoryCard } from "@/components";
 import { Card } from "@tremor/react";
 import { queryBuilder } from "../../lib/planetscale";
 
@@ -24,7 +23,6 @@ export default async function Home() {
         <div>
           pressing a story will redirect to home page for now. work in progress
         </div>
-        {/* @ts-expect-error Server Component */}
         <StoryCard stories={stories} />
       </Card>
 

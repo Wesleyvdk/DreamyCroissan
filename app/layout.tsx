@@ -5,9 +5,8 @@ import Nav from "./Nav";
 import { Suspense } from "react";
 
 export const metadata = {
-  title: "Ophiussa Esports",
-  description:
-    "6mans and levels leaderboard page of Ophiussa Esports discord server",
+  title: "DreamyCroissant",
+  description: "storytelling",
 };
 
 export default async function RootLayout({
