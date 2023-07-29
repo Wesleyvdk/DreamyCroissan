@@ -21,7 +21,7 @@ export default async function Home() {
     <main className="p-4 md:p-10 mx-auto max-w-7xl">
       <Card className="mt-6 bg-void">
         <div>
-          pressing a story will redirect to home page for now. work in progress
+          pressing a story will redirect to about page for now. work in progress
         </div>
         <StoryCard stories={stories} />
       </Card>

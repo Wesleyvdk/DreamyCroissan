@@ -41,7 +41,7 @@ export default function StoryCard({ stories }: { stories: Stories[] }) {
         {stories.map((story) => (
           <TableRow key={story.id}>
             <TableCell className="text-stark">
-              <Link href="/">{story.name}</Link>
+              <Link href="/about">{story.name}</Link>
             </TableCell>
             <TableCell>
               <Text className="inline-flex whitespace-pre text-stark">
