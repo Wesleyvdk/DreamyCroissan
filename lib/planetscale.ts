@@ -11,7 +11,7 @@ interface Author {
 }
 
 interface Story {
-    id: Generated<number>;
+    id: number;
     name: string;
     author: string;
     author_id: string;
