@@ -1,3 +1,4 @@
-import Staff from "./recommended";
+import Recommended from "./recommended";
 import About from "./about";
-export { Staff, About };
+import Story from "./story";
+export { Recommended, About, Story };

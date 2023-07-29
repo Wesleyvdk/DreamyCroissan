@@ -7,9 +7,7 @@ import { exploreRecommendations } from "../constants";
 import { staggerContainer } from "../utils/motion";
 import { RecommendedCard, TitleText, TypingText } from "../components";
 
-const Staff: React.FC = () => {
-  const [active, setActive] = useState("");
-
+const Recommended: React.FC = () => {
   return (
     <section className={`sm:p-16 xs:p-8 px-6 py-12`} id="explore">
       <motion.div
@@ -19,7 +17,6 @@ const Staff: React.FC = () => {
         viewport={{ once: false, amount: 0.25 }}
         className={`2xl:max-w-[1280px] w-full mx-auto flex flex-col`}
       >
-        {/* <TypingText title="| The Staff" textStyles="text-center" /> */}
         <TitleText
           title={
             <>
@@ -38,4 +35,4 @@ const Staff: React.FC = () => {
   );
 };
 
-export default Staff;
+export default Recommended;

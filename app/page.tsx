@@ -1,12 +1,14 @@
 import About from "@/sections/about";
 import Staff from "@/sections/recommended";
+import Recommended from "../sections/recommended";
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="relative">
         <About />
         <div className="gradient-03 z-0" />
-        <Staff />
+        <Recommended />
       </div>
 
       <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-3 lg:text-left">
