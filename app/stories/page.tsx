@@ -24,6 +24,7 @@ export default async function Home() {
         <div>
           pressing a story will redirect to home page for now. work in progress
         </div>
+        {/* @ts-expect-error Server Component */}
         <StoryCard stories={stories} />
       </Card>
 
