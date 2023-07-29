@@ -3,6 +3,7 @@ import { StoryCard } from "@/components";
 import { Card } from "@tremor/react";
 import { queryBuilder } from "../../lib/planetscale";
 
+export const dynamic = "force-dynamic";
 export default async function Home() {
   const stories = await queryBuilder
     .selectFrom("stories")
