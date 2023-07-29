@@ -1,42 +1,98 @@
+"use client";
 import Image from "next/image";
 import "../globals.css";
+import { motion } from "framer-motion";
+import { TypingText } from "../../components";
+import { fadeIn, staggerContainer } from "../../utils/motion";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex"></div>
-
-      <div className="relative flex place-items-center after:absolute after:-z-20 after:h-[280px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <div className="w-72">
-          <p className="mb-5">
-            Welcome to DreamyCroissant, your gateway to a world of captivating
-            stories! We believe that every story has the power to transport
-            readers to new realms of imagination and emotion. Our platform is
-            dedicated to providing a diverse collection of tales from talented
-            storytellers across the globe.
-          </p>
-          <p className="mb-5">
+      <section className={`sm:p-16 xs:p-8 px-6 py-12 relative z-10`}>
+        <div className="gradient-02 z-0" />
+        <motion.div
+          variants={staggerContainer(0.1, 1.1)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.25 }}
+          className={`2xl:max-w-[1280px] w-full mx-auto flex justify-center items-center flex-col`}
+        >
+          <motion.p
+            variants={fadeIn("up", "tween", 0.2, 1)}
+            className="mt-[8px] font-normal sm:text-[32px] text-[20px] text-center text-secondary-white"
+          >
+            Welcome to
+            <span className="font-extrabold text-white"> DreamyCroissant</span>,
+            your gateway to a world of captivating stories! We believe that
+            every story has the power to transport readers to new realms of
+            imagination and emotion. Our platform is dedicated to providing a
+            diverse collection of tales from talented storytellers across the
+            globe.
+          </motion.p>
+        </motion.div>
+      </section>
+      <section className={`sm:p-16 xs:p-8 px-6 py-12 relative z-10`}>
+        <div className="gradient-02 z-0" />
+        <motion.div
+          variants={staggerContainer(0.1, 1.1)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.25 }}
+          className={`2xl:max-w-[1280px] w-full mx-auto flex justify-center items-center flex-col`}
+        >
+          <motion.p
+            variants={fadeIn("up", "tween", 0.2, 1)}
+            className="mt-[8px] font-normal sm:text-[32px] text-[20px] text-center text-secondary-white"
+          >
             At DreamyCroissant, you can dive into a myriad of genres, from
             fantasy and science fiction to romance and mystery. With our
             user-friendly interface, you can easily discover stories based on
             your preferences, sorted by upload date, name, or rating. If you're
             an aspiring author, you can share your own tales and connect with
             readers who share your passion for storytelling.
-          </p>
-          <p className="mb-5">
+          </motion.p>
+        </motion.div>
+      </section>
+      <section className={`sm:p-16 xs:p-8 px-6 py-12 relative z-10`}>
+        <div className="gradient-02 z-0" />
+        <motion.div
+          variants={staggerContainer(0.1, 1.1)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.25 }}
+          className={`2xl:max-w-[1280px] w-full mx-auto flex justify-center items-center flex-col`}
+        >
+          <motion.p
+            variants={fadeIn("up", "tween", 0.2, 1)}
+            className="mt-[8px] font-normal sm:text-[32px] text-[20px] text-center text-secondary-white"
+          >
             Our commitment to creating an engaging community extends to the next
             level with secure login options through Discord. With NextAuth
             integration, you can rest assured that your reading journey is both
             seamless and protected.
-          </p>
-          <p className="mb-5">
+          </motion.p>
+        </motion.div>
+      </section>
+      <section className={`sm:p-16 xs:p-8 px-6 py-12 relative z-10`}>
+        <div className="gradient-02 z-0" />
+        <motion.div
+          variants={staggerContainer(0.1, 1.1)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.25 }}
+          className={`2xl:max-w-[1280px] w-full mx-auto flex justify-center items-center flex-col`}
+        >
+          <motion.p
+            variants={fadeIn("up", "tween", 0.2, 1)}
+            className="mt-[8px] font-normal sm:text-[32px] text-[20px] text-center text-secondary-white"
+          >
             Join us on this literary adventure and immerse yourself in the magic
             of words. Uncover new worlds, follow unforgettable characters, and
             be a part of the ever-growing DreamyCroissant community. Happy
             reading!
-          </p>
-        </div>
-      </div>
+          </motion.p>
+        </motion.div>
+      </section>
 
       <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
         <a

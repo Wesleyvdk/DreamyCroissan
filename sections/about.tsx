@@ -13,7 +13,7 @@ const About = () => (
       viewport={{ once: false, amount: 0.25 }}
       className={`2xl:max-w-[1280px] w-full mx-auto flex justify-center items-center flex-col`}
     >
-      <TypingText title="| About Ophiussa" textStyles="text-center" />
+      <TypingText title="| About DreamyCroissant" textStyles="text-center" />
       <motion.p
         variants={fadeIn("up", "tween", 0.2, 1)}
         className="mt-[8px] font-normal sm:text-[32px] text-[20px] text-center text-secondary-white"
@@ -25,12 +25,6 @@ const About = () => (
         and emotion. Our platform is dedicated to providing a diverse collection
         of tales from talented storytellers across the globe.
       </motion.p>
-      <motion.img
-        variants={fadeIn("up", "tween", 0.3, 1)}
-        src="/arrow-down.svg"
-        alt="arrow down"
-        className="w-[18px] h-[28px] object-contain mt-[28px]"
-      ></motion.img>
     </motion.div>
   </section>
 );

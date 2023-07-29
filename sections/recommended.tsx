@@ -19,7 +19,7 @@ const Staff: React.FC = () => {
         viewport={{ once: false, amount: 0.25 }}
         className={`2xl:max-w-[1280px] w-full mx-auto flex flex-col`}
       >
-        <TypingText title="| The Staff" textStyles="text-center" />
+        {/* <TypingText title="| The Staff" textStyles="text-center" /> */}
         <TitleText
           title={
             <>
