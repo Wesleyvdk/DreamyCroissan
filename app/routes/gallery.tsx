@@ -29,7 +29,7 @@ import { useLoaderData } from "@remix-run/react";
 const getFileMetadata = async (key: any) => {
   const S3 = new S3Client({
     region: "auto",
-    endpoint: process.env.CLOUDFLARE_S3!,
+    endpoint: process.env.CLOUDFLARE_S3_DEV!,
     credentials: {
       accessKeyId: process.env.ACCESS_KEY_ID!,
       secretAccessKey: process.env.SECRET_ACCESS_KEY!,
@@ -52,7 +52,7 @@ const getFileMetadata = async (key: any) => {
 export const loader: LoaderFunction = async () => {
   const S3 = new S3Client({
     region: "auto",
-    endpoint: process.env.CLOUDFLARE_S3!,
+    endpoint: process.env.CLOUDFLARE_S3_DEV!,
     credentials: {
       accessKeyId: process.env.ACCESS_KEY_ID!,
       secretAccessKey: process.env.SECRET_ACCESS_KEY!,
@@ -77,7 +77,7 @@ export const loader: LoaderFunction = async () => {
       ).then(async (response) => await response.json());
       return {
         key: item.Key,
-        url: process.env.CLOUDFLARE_S3 + item.Key,
+        url: process.env.CLOUDFLARE_S3_DEV + item.Key,
         title: metadata!.title,
         description: metadata!.description,
         artist_id: metadata!.uploader_id,

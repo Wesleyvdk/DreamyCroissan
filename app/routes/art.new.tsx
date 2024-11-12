@@ -33,7 +33,7 @@ export async function action({ request }: ActionFunctionArgs) {
 
     const S3 = new S3Client({
       region: "auto",
-      endpoint: process.env.CLOUDFLARE_S3!,
+      endpoint: process.env.CLOUDFLARE_S3_DEV!,
       credentials: {
         accessKeyId: process.env.ACCESS_KEY_ID!,
         secretAccessKey: process.env.SECRET_ACCESS_KEY!,
@@ -91,7 +91,7 @@ export async function action({ request }: ActionFunctionArgs) {
 export let loader: LoaderFunction = async ({ request }) => {
   const S3 = new S3Client({
     region: "auto",
-    endpoint: process.env.CLOUDFLARE_S3!,
+    endpoint: process.env.CLOUDFLARE_S3_DEV!,
     credentials: {
       accessKeyId: process.env.ACCESS_KEY_ID!,
       secretAccessKey: process.env.SECRET_ACCESS_KEY!,
