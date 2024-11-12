@@ -12,12 +12,6 @@ The core ethos of Dreamy Croissant is accessibility and creativity. It’s desig
 4. **Community Engagement**: Users can follow each other, comment on stories, leave likes, and receive notifications for updates.
 5. **Blog Section**: A separate area for users who wish to write blogs instead of (or in addition to) stories.
 6. **Themes and Personalization**: Writers can choose how their stories appear, such as adjusting fonts, layout styles, and colors to create a unique reading experience.
-7. **Artwork**:
-   a. **Author-Added Images**:
-   Authors can upload or embed images directly into their stories.
-   Images can be placed in specific sections of the story using Markdown or an easy-to-use editor.
-   b. **Community-Added Illustrations**:
-   Readers can create and submit illustrations for stories they love.
-   Submitted illustrations are tied to specific sections or the overall theme of a story.
-   c. **Gallery Section for Stories**:
-   Each story could have a dedicated “Gallery” where users can browse all illustrations submitted for that story.
+7. **Author-Added Images**: Authors can upload or embed images directly into their stories. Images can be placed in specific sections of the story using Markdown or an easy-to-use editor.
+8. **Community-Added Illustrations**: Readers can create and submit illustrations for stories they love. Submitted illustrations are tied to specific sections or the overall theme of a story.
+9. **Gallery Section for Stories**: Each story could have a dedicated “Gallery” where users can browse all illustrations submitted for that story.
