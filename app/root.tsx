@@ -4,12 +4,14 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
+import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 
 import "./tailwind.css";
 import { SidebarProvider, SidebarTrigger } from "./components/ui/sidebar";
 import { AppSidebar } from "./components/app-sidebar";
+import { auth } from "./auth.server";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -24,7 +26,12 @@ export const links: LinksFunction = () => [
   },
 ];
 
+export let loader: LoaderFunction = async ({ request }) => {
+  return await auth.isAuthenticated(request, {});
+};
+
 export function Layout({ children }: { children: React.ReactNode }) {
+  const user = useLoaderData<typeof loader>();
   return (
     <html lang="en">
       <head>
@@ -33,11 +40,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="flex">
         <SidebarProvider>
-          <AppSidebar />
-
-          <main>
+          <AppSidebar user={user} />
+          <main className="flex-1 px-6">
             <SidebarTrigger />
             {children}
           </main>
