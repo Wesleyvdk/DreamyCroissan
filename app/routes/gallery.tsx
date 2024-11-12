@@ -63,6 +63,9 @@ export const loader: LoaderFunction = async () => {
     Prefix: "images/",
   });
   const { Contents } = await S3.send(images);
+  if (!Contents) {
+    return [];
+  }
   const files = await Promise.all(
     Contents!.map(async (item: any) => {
       const metadata = await getFileMetadata(item.Key);
