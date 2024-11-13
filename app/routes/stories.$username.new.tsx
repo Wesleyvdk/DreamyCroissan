@@ -23,7 +23,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import Markdown from "react-markdown";
 import { ActionFunction, LoaderFunction, json } from "@remix-run/node";
-import { appendMarkdownFile, readMarkdownFile } from "~/lib/s3.server";
+import { appendMarkdownFile, readMarkdownFile } from "~/lib/s3.stories.server";
 
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
