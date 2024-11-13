@@ -80,7 +80,7 @@ export const loader: LoaderFunction = async () => {
       ).then(async (response) => await response.json());
       return {
         key: item.Key,
-        url: "https://r2.aylanibot.app/" + item.Key,
+        url: "https://pub-35b9191c2284498aa86fab345ffe37ed.r2.dev/" + item.Key,
         title: metadata!.title,
         description: metadata!.description,
         artist_id: metadata!.uploader_id,
