@@ -17,6 +17,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import ReactMarkdown from "react-markdown";
 import { ActionFunction, LoaderFunction, json } from "@remix-run/node";
 import { appendMarkdownFile, readMarkdownFile } from "~/lib/s3.blogs.server";
+import { sessionStorage } from "~/session.server";
 
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
@@ -29,6 +30,10 @@ export const loader: LoaderFunction = async ({ request }) => {
 };
 
 export const action: ActionFunction = async ({ request }) => {
+  const session = await sessionStorage.getSession(
+    request.headers.get("Cookie")
+  );
+  const user = session.get("user");
   const formData = await request.formData();
   const filename = formData.get("title") as string;
   const newContent = formData.get("content") as string;
@@ -42,10 +47,24 @@ export const action: ActionFunction = async ({ request }) => {
     );
   }
   if (action === "save") {
-    await appendMarkdownFile(filename, newContent, "", "draft");
+    await appendMarkdownFile(
+      filename,
+      newContent,
+      "",
+      user.id,
+      user.username,
+      "draft"
+    );
   }
   if (action === "publish") {
-    await appendMarkdownFile(filename, newContent, description, "public");
+    await appendMarkdownFile(
+      filename,
+      newContent,
+      description,
+      user.id,
+      user.username,
+      "public"
+    );
   }
 
   return json({ success: true });
@@ -111,47 +130,54 @@ export default function NewBlog() {
                 <Button>Publish</Button>
               </DialogTrigger>
               <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Publish Your Blog Post</DialogTitle>
-                  <DialogDescription>
-                    Please provide additional details before publishing your
-                    blog post.
-                  </DialogDescription>
-                </DialogHeader>
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="publish-title">Title</Label>
-                    <Input
-                      id="publish-title"
-                      name="publish-title"
-                      value={title}
-                      onChange={(e: any) => setTitle(e.target.value)}
-                      placeholder="Enter your blog post title"
-                    />
+                <Form method="post" encType="multipart/form-data">
+                  <DialogHeader>
+                    <DialogTitle>Publish Your Blog Post</DialogTitle>
+                    <DialogDescription>
+                      Please provide additional details before publishing your
+                      blog post.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="space-y-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="publish-title">Title</Label>
+                      <Input
+                        id="publish-title"
+                        name="publish-title"
+                        value={title}
+                        onChange={(e: any) => setTitle(e.target.value)}
+                        placeholder="Enter your blog post title"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="description">Short Description</Label>
+                      <Textarea
+                        id="description"
+                        name="description"
+                        placeholder="Write a brief description of your blog post"
+                        value={description}
+                        onChange={(e: any) => setDescription(e.target.value)}
+                        rows={3}
+                      />
+                    </div>
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="description">Short Description</Label>
-                    <Textarea
-                      id="description"
-                      name="description"
-                      placeholder="Write a brief description of your blog post"
-                      value={description}
-                      onChange={(e: any) => setDescription(e.target.value)}
-                      rows={3}
-                    />
-                  </div>
-                </div>
-                <DialogFooter>
-                  <Button
-                    variant="outline"
-                    onClick={() => setIsPublishModalOpen(false)}
-                  >
-                    Cancel
-                  </Button>
-                  <Button type="submit" name="action" value="publish">
-                    Publish
-                  </Button>
-                </DialogFooter>
+                  <DialogFooter>
+                    <Button
+                      variant="outline"
+                      onClick={() => setIsPublishModalOpen(false)}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      type="submit"
+                      name="action"
+                      value="publish"
+                      onClick={() => setIsPublishModalOpen(false)}
+                    >
+                      Publish
+                    </Button>
+                  </DialogFooter>
+                </Form>
               </DialogContent>
             </Dialog>
           </div>

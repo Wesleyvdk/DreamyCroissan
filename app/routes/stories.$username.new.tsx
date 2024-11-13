@@ -24,6 +24,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import Markdown from "react-markdown";
 import { ActionFunction, LoaderFunction, json } from "@remix-run/node";
 import { appendMarkdownFile, readMarkdownFile } from "~/lib/s3.stories.server";
+import { sessionStorage } from "~/session.server";
 
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
@@ -36,6 +37,10 @@ export const loader: LoaderFunction = async ({ request }) => {
 };
 
 export const action: ActionFunction = async ({ request }) => {
+  const session = await sessionStorage.getSession(
+    request.headers.get("Cookie")
+  );
+  const user = session.get("user");
   const formData = await request.formData();
   const filename = formData.get("title") as string;
   const newContent = formData.get("content") as string;
@@ -50,12 +55,22 @@ export const action: ActionFunction = async ({ request }) => {
     );
   }
   if (action === "save") {
-    await appendMarkdownFile(filename, newContent, "", "", "draft");
+    await appendMarkdownFile(
+      filename,
+      newContent,
+      user.id,
+      user.username,
+      "",
+      "",
+      "draft"
+    );
   }
   if (action === "publish") {
     await appendMarkdownFile(
       filename,
       newContent,
+      user.id,
+      user.username,
       genre,
       description,
       "public"
