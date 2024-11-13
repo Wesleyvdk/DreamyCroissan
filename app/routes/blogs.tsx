@@ -1,3 +1,4 @@
+import { Outlet } from "@remix-run/react";
 import { Input } from "~/components/ui/input";
 
 export default function Stories() {
@@ -10,6 +11,7 @@ export default function Stories() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Add StoryCard components here */}
       </div>
+      <Outlet />
     </div>
   );
 }

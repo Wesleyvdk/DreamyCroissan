@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "@remix-run/react";
+import { Outlet, useParams } from "@remix-run/react";
 import { Button } from "~/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import {
@@ -221,6 +221,7 @@ export default function StoryPage() {
           </DialogContent>
         </Dialog>
       )}
+      <Outlet />
     </>
   );
 }

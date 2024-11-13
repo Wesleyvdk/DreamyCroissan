@@ -31,7 +31,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "./ui/collapsible";
-import { Form } from "@remix-run/react";
+import { Form, Link } from "@remix-run/react";
 import { Avatar, AvatarImage } from "./ui/avatar";
 
 interface NavItem {
@@ -45,42 +45,59 @@ interface NavGroup {
   items: NavItem[];
 }
 
-// Menu items.
-const storyGroup: NavGroup = {
-  title: "Stories",
-  items: [
-    { title: "Read Story", url: "/stories" },
-    { title: "Write Story", url: "/story/new" },
-  ],
-};
-
-const blogGroup: NavGroup = {
-  title: "Blogs",
-  items: [
-    { title: "Read Blog", url: "/blogs" },
-    { title: "Write Blog", url: "/blog/new" },
-  ],
-};
-
-const artGroup: NavGroup = {
-  title: "Art",
-  items: [
-    { title: "Art", url: "/gallery" },
-    { title: "upload Art", url: "/art/new" },
-  ],
-};
-
-const footerGroup: NavGroup = {
-  title: "Footer",
-  items: [
-    { title: "About Us", url: "/about" },
-    { title: "Contact Us", url: "/contact" },
-    { title: "Privacy Policy", url: "/privacy" },
-    { title: "Terms of Service", url: "/terms" },
-  ],
-};
-
 export function AppSidebar({ user }: { user: any }) {
+  // Menu items.
+  let storyGroup: NavGroup;
+  let blogGroup: NavGroup;
+  let artGroup: NavGroup;
+  if (!user) {
+    storyGroup = {
+      title: "Stories",
+      items: [{ title: "Read Stories", url: "/stories" }],
+    };
+    blogGroup = {
+      title: "Blogs",
+      items: [{ title: "Read Blog", url: "/blogs" }],
+    };
+    artGroup = {
+      title: "Art",
+      items: [{ title: "Art", url: "/art" }],
+    };
+  } else {
+    storyGroup = {
+      title: "Stories",
+      items: [
+        { title: "Read Stories", url: "/stories" },
+        { title: "My Stories", url: `/stories/${user.username}` },
+        { title: "Write Story", url: `/stories/${user.username}/new` },
+      ],
+    };
+    blogGroup = {
+      title: "Blogs",
+      items: [
+        { title: "Read Blog", url: "/blogs" },
+        { title: "My Blogs", url: `/blogs/${user.username}` },
+        { title: "Write Blog", url: `/blogs/${user.username}/new` },
+      ],
+    };
+    artGroup = {
+      title: "Art",
+      items: [
+        { title: "Art", url: "/art" },
+        { title: "upload Art", url: "/art/new" },
+      ],
+    };
+  }
+
+  const footerGroup: NavGroup = {
+    title: "Footer",
+    items: [
+      { title: "About Us", url: "/about" },
+      { title: "Contact Us", url: "/contact" },
+      { title: "Privacy Policy", url: "/privacy" },
+      { title: "Terms of Service", url: "/terms" },
+    ],
+  };
   return (
     <Sidebar variant="floating">
       <SidebarContent>
@@ -110,9 +127,9 @@ export function AppSidebar({ user }: { user: any }) {
                   {storyGroup.items.map((item) => (
                     <SidebarMenuItem key={item.title}>
                       <SidebarMenuButton asChild>
-                        <a href={item.url}>
+                        <Link to={item.url}>
                           <span>{item.title}</span>
-                        </a>
+                        </Link>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                   ))}
@@ -135,9 +152,9 @@ export function AppSidebar({ user }: { user: any }) {
                   {blogGroup.items.map((item) => (
                     <SidebarMenuItem key={item.title}>
                       <SidebarMenuButton asChild>
-                        <a href={item.url}>
+                        <Link to={item.url}>
                           <span>{item.title}</span>
-                        </a>
+                        </Link>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                   ))}
@@ -160,9 +177,9 @@ export function AppSidebar({ user }: { user: any }) {
                   {artGroup.items.map((item) => (
                     <SidebarMenuItem key={item.title}>
                       <SidebarMenuButton asChild>
-                        <a href={item.url}>
+                        <Link to={item.url}>
                           <span>{item.title}</span>
-                        </a>
+                        </Link>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                   ))}
@@ -187,9 +204,9 @@ export function AppSidebar({ user }: { user: any }) {
                   {footerGroup.items.map((item) => (
                     <SidebarMenuItem key={item.title}>
                       <SidebarMenuButton asChild>
-                        <a href={item.url}>
+                        <Link to={item.url}>
                           <span>{item.title}</span>
-                        </a>
+                        </Link>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                   ))}

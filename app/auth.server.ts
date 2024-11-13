@@ -14,6 +14,7 @@ type CustomDiscordGuild = Omit<PartialDiscordGuild, "features">;
 export interface DiscordUser {
   id: DiscordProfile["id"];
   displayName: DiscordProfile["displayName"];
+  username: DiscordProfile["__json"]["username"];
   avatar: DiscordProfile["__json"]["avatar"];
   email: DiscordProfile["__json"]["email"];
   locale?: string;
@@ -75,6 +76,7 @@ const discordStrategy = new DiscordStrategy(
     return {
       id: profile.id,
       displayName: profile.displayName,
+      username: profile.__json.username,
       avatar: profile.__json.avatar,
       email: profile.__json.email,
       locale: profile.__json.locale,

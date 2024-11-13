@@ -1,3 +1,4 @@
+import { Outlet } from "@remix-run/react";
 import { Input } from "~/components/ui/input";
 
 export default function Stories() {
