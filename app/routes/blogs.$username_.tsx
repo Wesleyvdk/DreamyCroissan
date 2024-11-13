@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, Outlet, useNavigate } from "@remix-run/react";
+import { Link, useNavigate } from "@remix-run/react";
 import { Button } from "~/components/ui/button";
 import {
   Card,
@@ -166,7 +166,6 @@ export default function MyStoriesPage() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-      <Outlet />
     </>
   );
 }

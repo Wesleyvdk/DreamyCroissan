@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, Outlet, useLoaderData, useNavigate } from "@remix-run/react";
+import { Form, useLoaderData, useNavigate } from "@remix-run/react";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
@@ -27,11 +27,12 @@ import { appendMarkdownFile, readMarkdownFile } from "~/lib/s3.stories.server";
 
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
-  const filename = url.searchParams.get("file") || "example.md";
+  const filename = url.searchParams.get("file") || "";
+  const fileTitle = filename.split(".").pop();
 
   const preContent = await readMarkdownFile(filename);
 
-  return json({ preContent, filename });
+  return json({ preContent, fileTitle });
 };
 
 export const action: ActionFunction = async ({ request }) => {
@@ -65,9 +66,9 @@ export const action: ActionFunction = async ({ request }) => {
 };
 
 export default function NewStory() {
-  const { preContent, filename } = useLoaderData<typeof loader>();
+  const { preContent, fileTitle } = useLoaderData<typeof loader>();
   const [content, setContent] = useState(preContent);
-  const [title, setTitle] = useState(filename);
+  const [title, setTitle] = useState(fileTitle);
   const [genre, setGenre] = useState("");
   const [description, setDescription] = useState("");
   const [isPublishModalOpen, setIsPublishModalOpen] = useState(false);
@@ -186,7 +187,6 @@ export default function NewStory() {
           </div>
         </div>
       </Form>
-      <Outlet />
     </>
   );
 }

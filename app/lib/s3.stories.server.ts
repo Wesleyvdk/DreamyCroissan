@@ -29,7 +29,7 @@ export async function readMarkdownFile(filename: string): Promise<string> {
   try {
     const command = new GetObjectCommand({
       Bucket: BUCKET_NAME,
-      Key: `stories/${filename}`,
+      Key: `stories/${filename}.md`,
     });
     const response = await S3.send(command);
     return await streamToString(response.Body as Readable);
@@ -53,7 +53,7 @@ export async function appendMarkdownFile(
 
   const command = new PutObjectCommand({
     Bucket: BUCKET_NAME,
-    Key: `stories/${filename}`,
+    Key: `stories/${filename}.md`,
     Body: updatedContent,
     Metadata: {
       genre,
